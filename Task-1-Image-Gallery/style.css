@@ -6,85 +6,138 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+    background: #f4f6f8;
+    color: #222;
+    min-height: 100vh;
 }
 
-header {
+/* Header */
+.header {
     text-align: center;
-    padding: 40px 20px;
-    background: #222;
+    padding: 50px 20px;
+    background: #111827;
     color: white;
 }
 
-header h1 {
-    font-size: 40px;
+.header h1 {
+    font-size: 42px;
     margin-bottom: 10px;
 }
 
-header p {
+.header p {
+    font-size: 18px;
+    color: #d1d5db;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Filter Buttons */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #e5e7eb;
+    color: #111827;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #111827;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-item h3 {
+    text-align: center;
+    padding: 15px;
     font-size: 18px;
 }
 
-.gallery-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
+/* Lightbox */
 .lightbox {
-    display: none;
     position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
+    display: none;
     align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 30px;
 }
 
 .lightbox img {
     max-width: 80%;
-    max-height: 80%;
+    max-height: 80vh;
     border-radius: 10px;
+    object-fit: contain;
 }
 
+/* Lightbox Buttons */
 .close,
 .prev,
 .next {
     position: absolute;
-    color: white;
-    background: none;
     border: none;
+    background: transparent;
+    color: white;
     cursor: pointer;
-    font-size: 45px;
+    font-size: 40px;
 }
 
 .close {
     top: 20px;
     right: 35px;
+    font-size: 45px;
 }
 
 .prev {
@@ -98,29 +151,60 @@ header p {
 .close:hover,
 .prev:hover,
 .next:hover {
-    opacity: 0.7;
+    color: #d1d5db;
 }
 
-@media (max-width: 768px) {
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 25px;
+    background: #111827;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    header h1 {
-        font-size: 32px;
+    .header h1 {
+        font-size: 34px;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile */
+@media (max-width: 600px) {
     .gallery {
         grid-template-columns: 1fr;
     }
 
-    .gallery img {
-        height: 220px;
+    .header {
+        padding: 35px 15px;
+    }
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+    .header p {
+        font-size: 15px;
+    }
+
+    .gallery-item img {
+        height: 250px;
     }
 
     .lightbox img {
-        max-width: 90%;
+        max-width: 95%;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
     }
 }
