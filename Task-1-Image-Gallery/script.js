@@ -1,65 +1,137 @@
+// Gallery image list
 const images = [
-    "images/image1.jpg",
-    "images/image2.jpg",
-    "images/image3.jpg",
-    "images/image4.jpg",
-    "images/image5.jpg",
-    "images/image6.jpg"
+    "images/nature.jpg",
+    "images/beach.jpg",
+    "images/mountain.jpg",
+    "images/forest.jpg",
+    "images/city.jpg",
+    "images/sunset.jpg",
+    "images/flowers.jpg",
+    "images/wildlife.jpg"
 ];
 
 let currentIndex = 0;
 
+// Lightbox elements
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+
+const closeButton = document.querySelector(".close");
+const previousButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+
+// Gallery images
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+// Open lightbox
 function openLightbox(index) {
     currentIndex = index;
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightbox-image");
-
     lightboxImage.src = images[currentIndex];
     lightbox.style.display = "flex";
 }
 
+// Close lightbox
 function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
+    lightbox.style.display = "none";
 }
 
-function changeImage(direction) {
-    currentIndex += direction;
+// Show next image
+function showNextImage() {
+    currentIndex++;
 
     if (currentIndex >= images.length) {
         currentIndex = 0;
     }
 
+    lightboxImage.src = images[currentIndex];
+}
+
+// Show previous image
+function showPreviousImage() {
+    currentIndex--;
+
     if (currentIndex < 0) {
         currentIndex = images.length - 1;
     }
 
-    document.getElementById("lightbox-image").src =
-        images[currentIndex];
+    lightboxImage.src = images[currentIndex];
 }
 
-// Close lightbox when clicking outside the image
-document.getElementById("lightbox").addEventListener("click", function(event) {
-    if (event.target === this) {
+// Add click event to gallery images
+galleryItems.forEach((item, index) => {
+    item.addEventListener("click", function () {
+        openLightbox(index);
+    });
+});
+
+// Close button
+closeButton.addEventListener("click", closeLightbox);
+
+// Next button
+nextButton.addEventListener("click", showNextImage);
+
+// Previous button
+previousButton.addEventListener("click", showPreviousImage);
+
+// Close when clicking outside the image
+lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
         closeLightbox();
     }
 });
 
-// Keyboard navigation
-document.addEventListener("keydown", function(event) {
-    const lightbox = document.getElementById("lightbox");
+// Keyboard controls
+document.addEventListener("keydown", function (event) {
 
-    if (lightbox.style.display === "flex") {
-        if (event.key === "ArrowRight") {
-            changeImage(1);
-        }
-
-        if (event.key === "ArrowLeft") {
-            changeImage(-1);
-        }
-
-        if (event.key === "Escape") {
-            closeLightbox();
-        }
+    if (lightbox.style.display !== "flex") {
+        return;
     }
+
+    if (event.key === "ArrowRight") {
+        showNextImage();
+    }
+
+    if (event.key === "ArrowLeft") {
+        showPreviousImage();
+    }
+
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+});
+
+// Category filter
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        // Remove active class
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        // Add active class
+        this.classList.add("active");
+
+        const selectedCategory = this.getAttribute("data-filter");
+
+        galleryItems.forEach(item => {
+
+            const itemCategory = item.getAttribute("data-category");
+
+            if (
+                selectedCategory === "all" ||
+                selectedCategory === itemCategory
+            ) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+
+        });
+
+    });
+
 });
