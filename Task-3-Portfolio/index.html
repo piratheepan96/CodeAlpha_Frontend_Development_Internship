@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Piratheepan's personal portfolio">
+  <title>Piratheepan | My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a href="#home" class="logo">My Portfolio</a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Home -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+
+      <img
+        src="./image/profile.jpeg"
+        alt="Piratheepan Profile Photo"
+        class="profile-photo"
+        onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='flex';"
+      >
+
+      <div id="photoFallback" class="photo-fallback">P</div>
+
+      <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+
+      <h1>Hello, I'm <span>Piratheepan!</span></h1>
+      <h2>Student | Web Developer</h2>
+
+      <p class="intro">
+        I create websites using HTML, CSS and JavaScript.
+        I enjoy learning programming and building new projects.
+      </p>
+
+      <a class="btn" href="#projects">View My Projects</a>
+      <a class="btn btn-outline" href="#contact">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-card">
+      <h3>Who Am I?</h3>
+      <p>
+        Hello! My name is Piratheepan.
+        I am a student interested in programming,
+        web development and technology.
+        I am learning HTML, CSS, JavaScript and Java
+        to improve my technical skills.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section section-alt">
+    <h2 class="section-title">My Skills</h2>
+    <p class="section-description">
+      Technologies I am learning and practising.
+    </p>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <h3>HTML</h3>
+        <p>Web page structure</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🎨</span>
+        <h3>CSS</h3>
+        <p>Website styling</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">⚡</span>
+        <h3>JavaScript</h3>
+        <p>Interactive websites</p>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">☕</span>
+        <h3>Java</h3>
+        <p>Programming basics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2 class="section-title">My Projects</h2>
+    <p class="section-description">
+      Some projects I have worked on.
+    </p>
+
+    <div class="projects">
+      <article class="project-card">
+        <div class="project-icon">🖼️</div>
+        <h3>Image Gallery</h3>
+        <p>
+          A responsive image gallery website
+          displaying beautiful images.
+        </p>
+        <span class="tag">HTML · CSS · JavaScript</span>
+        <a
+          class="project-link"
+          href="https://github.com/piratheepan96/CodeAlpha_Frontend_Development_Internship/tree/main/Task-1-Image-Gallery"
+          target="_blank"
+          rel="noopener noreferrer"
+        >View Project →</a>
+      </article>
+
+      <article class="project-card">
+        <div class="project-icon">🧮</div>
+        <h3>Calculator</h3>
+        <p>
+          A calculator that performs basic
+          mathematical operations.
+        </p>
+        <span class="tag">HTML · CSS · JavaScript</span>
+        <a
+          class="project-link"
+          href="https://github.com/piratheepan96/CodeAlpha_Frontend_Development_Internship/tree/main/Task-2-Calculator"
+          target="_blank"
+          rel="noopener noreferrer"
+        >View Project →</a>
+      </article>
+
+      <article class="project-card">
+        <div class="project-icon">💻</div>
+        <h3>Portfolio Website</h3>
+        <p>
+          My personal website to showcase
+          my skills and projects.
+        </p>
+        <span class="tag">HTML · CSS · JavaScript</span>
+        <a class="project-link" href="#home">View Portfolio →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-alt">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="section-description">
+      Feel free to contact me by email.
+    </p>
+
+    <div class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <h3>Email Address</h3>
+      <a href="mailto:piratheepank1@gmail.com">
+        piratheepank1@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Piratheepan | My Portfolio</p>
+    <p>Built with HTML, CSS and JavaScript.</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top" title="Back to top">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
